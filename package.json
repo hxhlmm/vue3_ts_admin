@@ -6,13 +6,28 @@
   "scripts": {
     "dev": "vite --open",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint src",
+    "fix": "eslint src --fix"
   },
   "dependencies": {
     "vue": "^3.2.47"
   },
   "devDependencies": {
+    // 该解析器允许使用ESLint校验所有Babel code
+    "@babel/eslint-parser": "^7.21.8",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
     "@vitejs/plugin-vue": "^4.1.0",
+    "eslint": "^8.41.0",
+    // 让所有与prettier规则存在冲突的ESLint rules失效，并使用prettier进行代码检查
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    // 运行更漂亮的ESLint，使prettier优先级更高，ESLint优先级更低
+    "eslint-plugin-prettier": "^4.2.1",
+    // Vue.js的ESLint插件：查找Vue语法错误，发现错误指令，查找违规风格指南
+    "eslint-plugin-vue": "^9.14.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vue-tsc": "^1.4.2"
