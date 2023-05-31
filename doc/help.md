@@ -13,7 +13,7 @@ pnpm install
 pnpm run dev
 ```
 
-package.json 中对于依赖的注释：（因为json文件中不允许注释）
+package.json 中对于依赖的注释：（因为 json 文件中不允许注释）
 
 ```json
 "devDependencies": {
@@ -35,4 +35,19 @@ package.json 中对于依赖的注释：（因为json文件中不允许注释）
     "vite": "^4.3.2",
     "vue-tsc": "^1.4.2"
   }
+```
+
+配置结束，现在当我们填写 `commit` 信息的时候，前面就需要带着下面的 `subject`
+
+```
+'feat', // 新特性、新功能
+'fix', // 修改bug
+'docs', // 文档修改
+'style', // 代码格式修改, 注意不是 css 修改
+'refactor', // 代码重构
+'perf', // 优化相关，比如提升性能、体验
+'test', // 测试用例修改
+'chore', // 其它修改, 比如改变构建流程、或者增加依赖库、工具等
+'revert', // 回滚到上一个版本
+'build', // 编译相关的修改，例如发布版本、对项目构建或者依赖的改动
 ```
