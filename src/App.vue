@@ -7,6 +7,7 @@
 
 <script setup lang="ts">
 // 引入图标组件
+// @ts-ignore
 import { Edit, Plus } from '@element-plus/icons-vue'
 // import { Plus } from '@element-plus/icons-vue'
 </script>
