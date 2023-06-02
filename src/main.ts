@@ -14,3 +14,5 @@ app.use(ElementPlus, {
 })
 // 将应用挂载到挂载点上
 app.mount('#app')
+// 获取环境变量
+console.log(import.meta.env)
