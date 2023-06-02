@@ -10,7 +10,7 @@ const app = createApp(App)
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 // 安装element-plus插件
 app.use(ElementPlus, {
-  locale: zhCn, // element-plus国际化配置
+  locale: zhCn // element-plus国际化配置
 })
 // 将应用挂载到挂载点上
 app.mount('#app')
