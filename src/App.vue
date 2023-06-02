@@ -17,6 +17,9 @@
       <svg-icon name="code" color="pink"></svg-icon>
       <svg-icon name="code" color="green" width="40px" height="40px"></svg-icon>
     </div>
+    <div>
+      <Pagination></Pagination>
+    </div>
   </div>
 </template>
 
@@ -25,7 +28,7 @@
 // @ts-ignore
 import { Edit, Plus } from '@element-plus/icons-vue'
 // import { Plus } from '@element-plus/icons-vue'
-import SvgIcon from '@/components/SvgIcon/index.vue'
+// import SvgIcon from '@/components/SvgIcon/index.vue'
 </script>
 
 <style scoped></style>
