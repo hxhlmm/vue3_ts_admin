@@ -21,6 +21,48 @@ console.log(globalComponent)
 app.use(globalComponent)
 // 引入模板的全局的样式
 import '@/styles/index.scss'
+// 测试代码：测试假的接口能否使用
+import axios from 'axios'
+// 测试 用户登录 接口
+axios({
+  url: '/api/user/login',
+  method: 'post',
+  data: {
+    username: 'admin',
+    password: '12345678'
+  }
+})
+axios({
+  url: '/api/user/login',
+  method: 'post',
+  data: {
+    username: 'admin',
+    password: '111111'
+  }
+})
+axios({
+  url: '/api/user/login',
+  method: 'post',
+  data: {
+    username: 'system',
+    password: '12345678'
+  }
+})
+// 测试 获取用户信息 接口
+axios({
+  url: '/api/user/info',
+  method: 'get',
+  data: {
+    token: 'Admin Token'
+  }
+})
+axios({
+  url: '/api/user/info',
+  method: 'get',
+  data: {
+    token: 'System Token'
+  }
+})
 // 将应用挂载到挂载点上
 app.mount('#app')
 // 获取环境变量
