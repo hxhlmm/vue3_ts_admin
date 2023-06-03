@@ -19,6 +19,8 @@ import globalComponent from '@/components'
 console.log(globalComponent)
 // 安装自定义插件
 app.use(globalComponent)
+// 引入模板的全局的样式
+import '@/styles/index.scss'
 // 将应用挂载到挂载点上
 app.mount('#app')
 // 获取环境变量

@@ -20,6 +20,7 @@
     <div>
       <Pagination></Pagination>
     </div>
+    <h1>测试能否使用sass语法</h1>
   </div>
 </template>
 
@@ -31,4 +32,10 @@ import { Edit, Plus } from '@element-plus/icons-vue'
 // import SvgIcon from '@/components/SvgIcon/index.vue'
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+div {
+  h1 {
+    color: $base_color;
+  }
+}
+</style>
