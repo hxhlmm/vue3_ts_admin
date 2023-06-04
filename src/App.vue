@@ -21,6 +21,7 @@
       <Pagination></Pagination>
     </div>
     <h1>测试能否使用sass语法</h1>
+    <h1>测试axios的二次封装</h1>
   </div>
 </template>
 
@@ -28,8 +29,21 @@
 // 引入图标组件
 // @ts-ignore
 import { Edit, Plus } from '@element-plus/icons-vue'
-// import { Plus } from '@element-plus/icons-vue'
-// import SvgIcon from '@/components/SvgIcon/index.vue'
+import request from '@/utils/request'
+import { onMounted } from 'vue'
+// 当组件挂载完毕时，测试发一个请求
+onMounted(() => {
+  request({
+    url: '/user/login',
+    method: 'post',
+    data: {
+      username: 'admin',
+      password: '12345678'
+    }
+  }).then((res) => {
+    console.log(res)
+  })
+})
 </script>
 
 <style scoped lang="scss">

@@ -40,29 +40,6 @@ axios({
     password: '111111'
   }
 })
-axios({
-  url: '/api/user/login',
-  method: 'post',
-  data: {
-    username: 'system',
-    password: '12345678'
-  }
-})
-// 测试 获取用户信息 接口
-axios({
-  url: '/api/user/info',
-  method: 'get',
-  data: {
-    token: 'Admin Token'
-  }
-})
-axios({
-  url: '/api/user/info',
-  method: 'get',
-  data: {
-    token: 'System Token'
-  }
-})
 // 将应用挂载到挂载点上
 app.mount('#app')
 // 获取环境变量
