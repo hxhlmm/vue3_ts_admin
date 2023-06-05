@@ -58,6 +58,42 @@ cd vue_test
 npm run serve
 ```
 
+### 分析 @vue/cli 创建的 Vue3 项目工程结构
+
+**① 入口文件 src/main.js**
+
+```js
+// 引入的不再是 Vue 构造函数了，引入的是一个名为 createApp 的工厂函数
+// 构造函数：一般大写开头，需要 new 一下
+// 工厂函数：一般小写开头，不需要 new，可以直接调用
+import { createApp } from 'vue'
+import App from './App.vue'
+
+createApp(App).mount('#app')
+```
+
+```js
+// Vue3 写法拆解
+// 创建应用实例对象 app（类似于之前 Vue2 中的 vm，但 app 比 vm 更“轻”：没有 vm 那么多属性和方法）
+const app = createApp(App)
+// 挂载
+app.mount('#app')
+// 卸载
+// app.unmount('#app')
+```
+
+```js
+// Vue2 写法拆解
+const vm = new Vue({
+  render: (h) => h(App)
+})
+vm.$mount('#app')
+```
+
+**② App.vue**
+
+Vue3 组件中的模板结构可以没有根标签
+
 ## 2. 使用 Vite 创建
 
 官网：[https://cn.vitejs.dev/](https://cn.vitejs.dev/)
