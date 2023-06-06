@@ -116,3 +116,20 @@ npm install
 ## 运行
 npm run dev
 ```
+
+# 二、常用 Composition API
+
+## 1. 拉开序幕的 setup
+
+- 理解：Vue3.0 中一个新的配置项，值为一个函数
+- setup 是所有 _Composition API（组合式 API）_ **表演的舞台**
+- 组件中所用到的：数据、方法等等，均要配置在 setup 中
+- setup 函数的两种返回值：
+  - **若返回一个对象，则对象中的属性、方法，在模板中均可以直接使用**
+  - _若返回一个渲染函数，则可以自定义渲染内容_
+- 注意点：
+  - 尽量不要与 Vue2.x 配置混用
+    - Vue2.x 配置（data、methods、computed ...）中**可以访问到** setup 中的属性、方法
+    - 但在 setup 中**不能访问到** Vue2.x 的配置（data、methods、computed ...）
+    - 如果有重名，setup 优先
+  - setup 不能是一个 async 函数，因为返回值不再是 return 的对象，而是 promise，模板看不到 return 对象中的属性
