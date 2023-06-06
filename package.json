@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "lint": "eslint src",
     "fix": "eslint src --fix",
-    "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
+    "format": "prettier --write \"./**/*.{html,vue,ts,js,json}\"",
     "lint:eslint": "eslint src/**/*.{ts,vue} --cache --fix",
     "lint:style": "stylelint src/**/*.{css,scss,vue} --cache --fix",
     "prepare": "husky install",
