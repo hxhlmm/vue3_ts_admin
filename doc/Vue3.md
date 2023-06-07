@@ -133,3 +133,15 @@ npm run dev
     - 但在 setup 中**不能访问到** Vue2.x 的配置（data、methods、computed ...）
     - 如果有重名，setup 优先
   - setup 不能是一个 async 函数，因为返回值不再是 return 的对象，而是 promise，模板看不到 return 对象中的属性
+
+## 2. ref 函数
+
+- 作用：定义一个响应式的数据
+- 语法：`const xxx = ref(initValue)`
+  - 创建一个包含响应式数据的**引用对象（reference 对象）**
+  - JS 中操作数据：`xxx.value`
+  - 模板中读取数据：不需要 value，直接：`<div>{{ xxx }}</div>`
+- 备注：
+  - 接受的数据可以是：基本类型、对象类型
+  - 基本类型的数据：响应式依然靠 `Object.defineProperty()` 的 `getter` 与 `setter` 实现
+  - 对象类型的数据：内部***求助***了 Vue3.0 中的一个新函数—— `reactive` 函数
