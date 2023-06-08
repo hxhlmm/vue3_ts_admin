@@ -202,3 +202,29 @@ this.$set(this.person.arr, 0, '123')
 Vue.set(this.person.arr, 0, '123')
 this.person.arr.splice(0, 1, '123')
 ```
+
+### Vue3.0 的响应式
+
+- 实现原理
+  - 通过 Proxy（代理）：拦截对象中任意属性的变化，包括属性值的读写、属性的添加、属性的删除等
+  - 通过 Reflect（反射）：对被代理对象（源对象）的属性进行操作
+  - MDN 文档中描述的 Proxy 和 Reflect
+    - Proxy [https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+    - Reflect [https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect)
+
+```js
+new Proxy(data, {
+  // 拦截读取属性值
+  get(target, prop) {
+    return Reflect.get(target, prop)
+  },
+  // 拦截设置属性或添加新属性
+  set(target, prop, value) {
+    return Reflect.set(target, prop, value)
+  },
+  // 拦截删除属性
+  deleteProperty(target, prop) {
+    return Reflect.deleteProperty(target, prop)
+  }
+})
+```
