@@ -143,12 +143,62 @@ npm run dev
   - 模板中读取数据：不需要 value，直接：`<div>{{ xxx }}</div>`
 - 备注：
   - 接受的数据可以是：基本类型、对象类型
-  - 基本类型的数据：响应式依然靠 `Object.defineProperty()` 的 `getter` 与 `setter` 实现
+  - 基本类型的数据：响应式依然靠 `Object.defineProperty()` 的 `get` 与 `set` 实现
   - 对象类型的数据：内部***求助***了 Vue3.0 中的一个新函数—— `reactive` 函数
 
 ## 3. reactive 函数
 
 - 作用：定义一个**对象类型**的响应式数据（基本类型别用它，用 `ref` 函数）
-- 语法：`const 代理对象 = reactive(被代理对象)` 接受一个对象（或数组），返回一个**代理器对象（proxy 对象）**
+- 语法：`const 代理对象 = reactive(被代理对象)` 接受一个对象（或数组），返回一个**代理器对象（Proxy 的实例对象，简称 proxy 对象）**
 - `reactive` 定义的响应式数据是**深层次**的
 - 内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据都是响应式的
+
+## 4. Vue3.0 中的响应式原理
+
+### Vue2.x 的响应式
+
+- 实现原理
+  - 对象类型：通过 `Object.defineProperty()` 对对象的已有属性值的读取、修改进行拦截（数据劫持）
+  - 数组类型：通过重写更新数组的一系列方法来实现拦截（对数组的变更方法进行了包裹）
+
+```js
+Object.defineProperty(data, 'count', {
+  get() {},
+  set() {}
+})
+```
+
+- 存在问题
+  - 对象：新增属性、删除属性，页面不会更新
+  - 数组：直接通过下标修改数组，页面不会自动更新
+
+- 解决方案
+  - 对象：
+    - 新增属性：
+      - this.$set
+      - Vue.set
+    - 删除属性：
+      - this.$delete
+      - Vue.delete
+  - 数组：
+    - 修改元素的值：
+      - this.$set
+      - Vue.set
+      - 调用数组的变更方法，例如 splice
+
+```js
+// 对象增加属性
+this.$set(this.person, 'sex', 'female')
+// 或者
+import Vue from 'vue'
+Vue.set(this.person, 'sex', 'female')
+// 对象删除属性
+this.$delete(this.person, 'name')
+// 或者
+import Vue from 'vue'
+Vue.delete(this.person, 'name')
+// 修改数组
+this.$set(this.person.arr, 0, '123')
+Vue.set(this.person.arr, 0, '123')
+this.person.arr.splice(0, 1, '123')
+```
