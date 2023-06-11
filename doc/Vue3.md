@@ -446,3 +446,33 @@ export default {
 }
 </script>
 ```
+
+## 5. provide 与 inject
+
+![](https://cn.vuejs.org/assets/provide-inject.3e0505e4.png)
+
+- 作用：实现**祖与后代组件间**通信
+- 套路：父组件有一个 provide 选项来提供数据，后代组件有一个 inject 选项来开始使用这些数据
+- 具体写法：
+
+祖组件中：
+
+```js
+setup() {
+  ......
+  let car = creative({ name: '奔驰', price: '40W' })
+  provide('car', car)
+  ......
+}
+```
+
+后代组件中：
+
+```js
+setup() {
+  ......
+  const car = inject('car')
+  return { car }
+  ......
+}
+```
