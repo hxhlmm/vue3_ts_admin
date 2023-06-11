@@ -493,3 +493,30 @@ setup() {
 ## 2. Composition API 的优势
 
 我们可以更优雅地组织我们的代码、函数，让相关功能的代码更加有序的组织在一起
+
+# 五、新的组件
+
+## 1. Fragment
+
+- 在 Vue2 中：组件必须要有一个根标签
+- 在 Vue3 中：组件可以没有根标签，内部会将多个标签包含在一个 Fragment 虚拟元素中
+- 好处：减少标签层级，减少内存占用
+
+## 2. Teleport
+
+- 什么是 Teleport？—— Teleport 是一种能够将我们的**组件 HTML 结构**移动到指定位置的技术
+
+```html
+<teleport to="移动位置">
+  <div v-if="isShow" class="mask">
+    <div class="dialog">
+      <h3>我是一个弹窗</h3>
+      <button @click="isShow = false">关闭弹窗</button>
+    </div>
+  </div>
+</teleport>
+```
+
+## 3. Suspense
+
+- 等待异步组件时渲染一些后备内容
